@@ -3,10 +3,10 @@ const MAX_NAME_LEN = 15; // Maximum length for mix names
 
 // List of available ambient tracks
 const TRACKS = [
-  { name: 'Forest',    file: './static/audio/forest.mp3',    bg: '/static/img/forest.jpg' },
-  { name: 'Ocean',     file: './static/audio/ocean.mp3',     bg: '/static/img/ocean.jpg'  },
-  { name: 'Cat',       file: './static/audio/cat.mp3',       bg: '/static/img/cat.jpg'    },
-  { name: 'Fireplace', file: './static/audio/fireplace.mp3', bg: '/static/img/fireplace.jpg' }
+  { name: 'Forest',    file: './static/audio/forest.mp3',    bg: '/SolaceWave/static/img/forest.jpg' },
+  { name: 'Ocean',     file: './static/audio/ocean.mp3',     bg: '/SolaceWave/static/img/ocean.jpg'  },
+  { name: 'Cat',       file: './static/audio/cat.mp3',       bg: '/SolaceWave/static/img/cat.jpg'    },
+  { name: 'Fireplace', file: './static/audio/fireplace.mp3', bg: '/SolaceWave/static/img/fireplace.jpg' }
 ];
 
 class SolaceWaveApp {
