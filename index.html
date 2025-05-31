@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolaceWave – ambient mixer</title>
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- ─────────── SIDE ─────────── -->
+    <aside class="sidebar">
+      <h1 class="logo">SolaceWave</h1>
+
+      <ul class="track-list" id="trackList"></ul>
+
+      <div class="mix-controls">
+        <button id="saveMix" class="primary-btn">💾 Save mix</button>
+
+        <form id="searchForm">
+          <input id="searchInput"
+                 type="search"
+                 placeholder="Search mixes…"
+                 required
+                 autofocus />
+        </form>
+
+        <h2 class="mix-title">My mixes</h2>
+        <ul id="mixList" class="mix-list"></ul>
+      </div>
+    </aside>
+
+    <!-- ─────────── MAIN ─────────── -->
+    <main class="stage" id="stage">
+      <canvas id="vizCanvas" width="600" height="600"></canvas>
+
+      <div class="controls">
+        <button id="playBtn" class="icon-btn">►</button>
+        <input id="volumeMaster" type="range" min="0" max="1" value="1" step="0.01" />
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* ---------- BASE & THEME ---------- */
+:root {
+  --bg:        #0E0E10;
+  --accent:    #8AFFD1;
+  --txt:       #FFFFFF;
+  --txt-dim:   #AAAAAA;
+  --radius:    20px;
+}
+*,*::before,*::after{ box-sizing:border-box; margin:0; }
+body{
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  color:var(--txt);
+  background:var(--bg);
+  height:100vh;
+  display:flex;
+}
+
+/* ---------- LAYOUT ---------- */
+.app{
+  flex:1;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  overflow:hidden;
+}
+.sidebar{
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(4px);
+  padding:24px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  align-items:flex-start;
+}
+.logo{ font-size:32px; font-weight:700; letter-spacing:1px; }
+
+/* ---------- TRACK CHIPS ---------- */
+.track-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding-left:0;
+  margin-right: -4px;
+}
+.track-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.track-item{
+  width:100%;
+  padding:10px 14px;
+  border-radius:var(--radius);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  background:rgba(255,255,255,.04);
+  cursor:pointer;
+  transition:background .3s, transform .2s;
+}
+.track-item:hover,
+.track-item.active{ background:var(--accent); color:var(--bg); transform:scale(1.03); }
+.track-vol{
+  width:100%; height:4px; appearance:none;
+  background:var(--txt-dim); border-radius:2px; cursor:default;
+}
+.track-vol::-webkit-slider-thumb{
+  appearance:none; width:10px; height:10px; border-radius:50%; background:var(--accent);
+}
+
+/* ---------- STAGE / CANVAS ---------- */
+.stage{
+  position:relative;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  overflow:hidden;
+  --bg0:none; --bg1:none;
+}
+.stage::before,
+.stage::after{
+  content:''; position:absolute; inset:0;
+  background-size:cover; background-position:center; transition:opacity .5s;
+}
+.stage::before{ z-index:-3; background-image:var(--bg0); opacity:1; }
+.stage::after{  z-index:-2; background-image:var(--bg1); opacity:0; }
+.stage.swap::before{opacity:0}
+.stage.swap::after {opacity:1}
+canvas{ max-width:95vmin; max-height:95vmin; }
+
+/* ---------- GLOBAL CONTROLS ---------- */
+.controls{
+  width:100%; max-width:640px; margin-top:24px;
+  display:flex; align-items:center; gap:12px;
+}
+.icon-btn{
+  font-size:20px; padding:8px 12px; border:none; border-radius:var(--radius);
+  background:var(--accent); color:var(--bg); cursor:pointer; transition:transform .2s;
+}
+.icon-btn:active{ transform:scale(.92); }
+input[type=range]{ flex:1; height:4px; appearance:none; background:var(--txt-dim); border-radius:2px; cursor:pointer; }
+input[type=range]::-webkit-slider-thumb{ appearance:none; width:12px; height:12px; border-radius:50%; background:var(--accent); border:none; }
+
+/* ---------- MIX SECTION ---------- */
+.mix-controls{ width:100%; }
+.primary-btn{
+  width:100%; max-width:220px; min-width:220px;
+  padding:10px 0; margin-top:12px;
+  border:none; border-radius:var(--radius);
+  background:var(--accent); color:var(--bg); font-weight:700;
+  cursor:pointer; transition:transform .2s;
+}
+.primary-btn:active{ transform:scale(.95); }
+.mix-title{ margin-top:24px; font-size:18px; }
+
+.mix-list{
+  list-style:none; margin-top:8px; display:flex; flex-direction:column; gap:8px;
+  width:100%; max-height:40vh; overflow-y:auto; padding-right:4px;
+  text-align:left;
+}
+.mix-list li{
+  width:100%; display:flex; align-items:center; gap:6px; justify-content:space-between;
+}
+.mix-name{
+  flex:1 1 0; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.mix-list button{
+  flex-shrink:0; border:none; background:transparent; font-size:18px;
+  color:var(--txt-dim); cursor:pointer;
+}
+
+/* ---------- SEARCH (FORM) ---------- */
+#searchForm{ width:100%; display:flex; gap:8px; margin:8px 0 16px; }
+#searchInput{
+  flex:1 1 auto; padding:6px 10px; border-radius:12px;
+  border:1px solid var(--txt-dim); background:#0003; color:var(--txt);
+}
+#searchInput::placeholder{ color:var(--txt-dim); }
+
+/* ---------- TOASTS (prefix demo) ---------- */
+@-webkit-keyframes toastFade{from{opacity:1}to{opacity:0}}
+@keyframes        toastFade{from{opacity:1}to{opacity:0}}
+.toast{ -webkit-animation:toastFade 3s forwards; animation:toastFade 3s forwards; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .app{ grid-template-columns:1fr; grid-template-rows:1fr auto; }
+  .sidebar{ flex-direction:row; align-items:center; overflow-x:auto; }
+  .track-list{ flex-direction:row; gap:8px; }
+  .track-list li{ white-space:nowrap; }
+  .logo{ font-size:24px; margin-right:12px; }
+}

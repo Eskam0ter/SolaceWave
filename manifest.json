@@ -1,0 +1,9 @@
+{
+  "name": "SolaceWave Ambient Mixer",
+  "short_name": "SolaceWave",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#0E0E10",
+  "background_color": "#0E0E10",
+  "icons": []
+}
