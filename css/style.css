@@ -93,6 +93,7 @@ canvas{ max-width:95vmin; max-height:95vmin; }
 .controls{
   width:100%; max-width:640px; margin-top:24px;
   display:flex; align-items:center; gap:12px;
+  flex-wrap:wrap;
 }
 .icon-btn{
   font-size:20px; padding:8px 12px; border:none; border-radius:var(--radius);
@@ -138,16 +139,56 @@ input[type=range]::-webkit-slider-thumb{ appearance:none; width:12px; height:12p
 }
 #searchInput::placeholder{ color:var(--txt-dim); }
 
-/* ---------- TOASTS (prefix demo) ---------- */
+/* ---------- TOASTS ---------- */
 @-webkit-keyframes toastFade{from{opacity:1}to{opacity:0}}
 @keyframes        toastFade{from{opacity:1}to{opacity:0}}
 .toast{ -webkit-animation:toastFade 3s forwards; animation:toastFade 3s forwards; }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:900px){
-  .app{ grid-template-columns:1fr; grid-template-rows:1fr auto; }
-  .sidebar{ flex-direction:row; align-items:center; overflow-x:auto; }
-  .track-list{ flex-direction:row; gap:8px; }
-  .track-list li{ white-space:nowrap; }
-  .logo{ font-size:24px; margin-right:12px; }
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+  }
+  .sidebar {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+  .track-list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    width: 100%;
+  }
+  .track-item {
+    min-width: 140px;
+    flex: 0 0 auto;
+  }
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stage {
+    padding: 16px;
+  }
+  .logo {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .mix-controls {
+    width: 100%;
+  }
+  .mix-list {
+    max-height: 200px;
+  }
 }
