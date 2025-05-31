@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SolaceWave – ambient mixer</title>
 
-  <!-- Inter -->
+  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json">
 </head>
 <body>
   <div id="app" class="app">
@@ -22,7 +22,7 @@
       <ul class="track-list" id="trackList"></ul>
 
       <div class="mix-controls">
-        <button id="saveMix" class="primary-btn">💾 Save mix</button>
+        <button id="saveMix" class="primary-btn">Save mix</button>
 
         <form id="searchForm">
           <input id="searchInput"
@@ -48,9 +48,9 @@
     </main>
   </div>
 
-  <script src="js/app.js" defer></script>
+  <script src="./js/app.js" defer></script>
   <script>
-    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');
   </script>
 </body>
 </html>
